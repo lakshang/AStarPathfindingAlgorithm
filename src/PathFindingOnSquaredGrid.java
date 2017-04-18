@@ -119,8 +119,8 @@ public class PathFindingOnSquaredGrid {
         return a;
     }
 
-    public static void path(boolean[][] arrayP, int Ai, int Aj, int Bi, int Bj, double costH, double costD) {
-        ArrayList<AStar_Algorithm> path = new AStar_Algorithm().path(Ai, Aj, Bi, Bj, arrayP, costD, costH);
+    public static void path(boolean[][] arrayP, int Ai, int Aj, int Bi, int Bj, double costH, double costD, String method) {
+        ArrayList<AStar_Algorithm> path = new AStar_Algorithm().path(Ai, Aj, Bi, Bj, arrayP, costD, costH, method);
 
         StdDraw.setPenColor(Color.cyan);
         StdDraw.filledSquare(Aj, arrayP.length - Ai - 1, .5);
@@ -138,7 +138,7 @@ public class PathFindingOnSquaredGrid {
                 costD = 1.0;
                 System.out.print("Cost : ");
                 timerFlow = new Stopwatch();
-                path(array, Ai, Aj, Bi, Bj, costH, costD);
+                path(array, Ai, Aj, Bi, Bj, costH, costD, "C");
                 StdOut.println("Elapsed time : " + timerFlow.elapsedTime());
                 menu(array, Ai, Aj, Bi, Bj, costH, costD);
                 break;
@@ -147,7 +147,7 @@ public class PathFindingOnSquaredGrid {
                 costD = 1.4;
                 System.out.print("Cost : ");
                 timerFlow = new Stopwatch();
-                path(array, Ai, Aj, Bi, Bj, costH, costD);
+                path(array, Ai, Aj, Bi, Bj, costH, costD, "E");
                 StdOut.println(" Elapsed time : " + timerFlow.elapsedTime());
                 menu(array, Ai, Aj, Bi, Bj, costH, costD);
                 break;
@@ -156,7 +156,7 @@ public class PathFindingOnSquaredGrid {
                 costD = 2.0;
                 System.out.print("Cost : ");
                 timerFlow = new Stopwatch();
-                path(array, Ai, Aj, Bi, Bj, costH, costD);
+                path(array, Ai, Aj, Bi, Bj, costH, costD, "M");
                 StdOut.println("Elapsed time : " + timerFlow.elapsedTime());
                 menu(array, Ai, Aj, Bi, Bj, costH, costD);
                 break;
@@ -178,7 +178,7 @@ public class PathFindingOnSquaredGrid {
 
         // The following will generate a 10x10 squared grid with relatively few obstacles in it
         // The lower the second parameter, the more obstacles (black cells) are generated
-        boolean[][] randomlyGenMatrix = random(1280, 0.8);
+        boolean[][] randomlyGenMatrix = random(10, 0.5);
 
         StdArrayIO.print(randomlyGenMatrix);
         show(randomlyGenMatrix, true);
